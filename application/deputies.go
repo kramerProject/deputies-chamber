@@ -9,7 +9,7 @@ type DeputiesClientInterface interface {
 }
 
 type Deputies struct {
-	DeputiesList []Deputy `json:"deputados"`
+	DeputiesList []Deputy `json:"dados"`
 }
 
 type Deputy struct {
