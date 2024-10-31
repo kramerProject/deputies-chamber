@@ -8,6 +8,12 @@ type DeputiesClientInterface interface {
 	GetAll() (Deputies, error)
 }
 
+type DeputiesStorageInterface interface {
+	Close() error
+	SaveDeputy(Deputy) error
+	SaveDeputies(Deputies) error
+}
+
 type Deputies struct {
 	DeputiesList []Deputy `json:"dados"`
 }

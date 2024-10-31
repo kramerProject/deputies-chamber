@@ -35,6 +35,7 @@ func (dc *deputiesClient) GetAll() (application.Deputies, error) {
 	if err != nil {
 		return application.Deputies{}, err
 	}
+
 	defer res.Body.Close()
 
 	// Lendo o corpo da resposta
@@ -49,5 +50,6 @@ func (dc *deputiesClient) GetAll() (application.Deputies, error) {
 		log.Fatalf("Erro ao fazer parsing do JSON: %v", err)
 		return application.Deputies{}, err
 	}
+
 	return deputies, nil
 }
