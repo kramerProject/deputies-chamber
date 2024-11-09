@@ -7,6 +7,7 @@ import (
 	"github.com/kramerProject/deputies-chamber/application"
 	deputies_client "github.com/kramerProject/deputies-chamber/client/deputies_client"
 	httpclient "github.com/kramerProject/deputies-chamber/pkg/http_client"
+	"github.com/kramerProject/deputies-chamber/server"
 	"github.com/kramerProject/deputies-chamber/storage/postgres"
 )
 
@@ -22,7 +23,9 @@ func main() {
 	deputiesClient := deputies_client.NewClient(httpClient, deputiesURL)
 	service := application.NewService(deputiesClient, storage)
 
-	result, _ := service.GetAll()
-	fmt.Println("result", result)
+	serv := server.MakeNewWebserver()
+	serv.Service = *service
+	serv.Serve()
+	fmt.Println("running")
 
 }
